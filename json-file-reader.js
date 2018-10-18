@@ -1,20 +1,9 @@
-// Deel 2:
+const fs = require('fs')
 
-function fileReader (filename, callback) {
-	var fs = require("fs"); //require fs library
-	fs.readFile(filename, "utf-8", function(err, data){ //check if error
-		if (err) { 
-			console.log('Foutje, bedankt!');
-			throw err; 
-		} 
-		else
-
-			var parsedData = JSON.parse(data); //parse data
-			callback(parsedData);
-		})
+exports.fileRead = function(filename, callback) { //so you can read this in another file
+	fs.readFile(fileName, function (err, data){
+		if (err){throw error}
+		item = JSON.parse(data)
+		callback(item)
+	})
 }
-
-exports.fileReader = fileReader;
-
-//export function to app countries.js file
-//read countries.json, write to another file, console log
